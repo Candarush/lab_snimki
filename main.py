@@ -42,7 +42,7 @@ def get_pix_from_coord(lon, lat):
     coeff_lat = (lat - UB) / (BB - UB)
     point_lon = get_point_between_two(PIXEL_UL, PIXEL_UR, coeff_lon)
     point_lat = get_point_between_two(PIXEL_UL, PIXEL_LL, coeff_lat)
-    return get_parallelogram_point(PIXEL_UL, point_lon, point_lat)
+    return get_intersection_point(PIXEL_UL, point_lon, point_lat)
 
 def draw_dot(pixelx, pixely, color):
     cv2.circle(img,(int(pixelx),int(pixely)), 10, color, -1)
@@ -67,7 +67,7 @@ def get_point_between_two(point1, point2, coeff):
     x = -((point2[0] - point1[0]) * y + (point1[0] * point2[1] - point2[0] * point1[1])) / (point1[1] - point2[1])
     return (x, y)
 
-def get_parallelogram_point(origin, point1, point2):
+def get_intersection_point(origin, point1, point2):
     return point1[0] + point2[0] - origin[0], point1[1] + point2[1] - origin[1]
 
 def download_city_data(city_relation):
