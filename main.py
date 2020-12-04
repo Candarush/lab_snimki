@@ -7,16 +7,26 @@ import xml.etree.ElementTree as ET
 # Разрешение экрана.
 SCREEN_RES = (1366, 768)
 
-# Координаты взял напрямую из MTL, чтение файла потом сделаю.
-COORD_UL = -124.58436, 49.84859
-COORD_UR = -121.22100, 49.84576
-COORD_LL = -124.52281, 47.86034
-COORD_LR = -121.29009, 47.85770
-
 PIXEL_UL = 1620, 15
 PIXEL_UR = 7852, 1376
 PIXEL_LL = 50, 5951
 PIXEL_LR = 6278, 7321
+
+def parse_arr(array, valuename):
+    for item in array:
+        if item.find(valuename) != -1:
+            return float(item.split('=',1)[1])
+
+# Читаем MTL файл.
+try:
+    mtl = open('LE07_L1TP_047026_20120512_20160911_01_T1_MTL.txt', 'r')
+    mtl_arr = mtl.read().split('\n')
+    COORD_UL = parse_arr(mtl_arr, 'CORNER_UL_LON_PRODUCT'), parse_arr(mtl_arr, 'CORNER_UL_LAT_PRODUCT')
+    COORD_UR = parse_arr(mtl_arr, 'CORNER_UR_LON_PRODUCT'), parse_arr(mtl_arr, 'CORNER_UR_LAT_PRODUCT')
+    COORD_LL = parse_arr(mtl_arr, 'CORNER_LL_LON_PRODUCT'), parse_arr(mtl_arr, 'CORNER_LL_LAT_PRODUCT')
+    COORD_LR = parse_arr(mtl_arr, 'CORNER_LR_LON_PRODUCT'), parse_arr(mtl_arr, 'CORNER_LR_LAT_PRODUCT')
+finally:
+    mtl.close()
 
 # Читаем картинку.
 img = cv2.imread('LE07_L1TP_047026_20011005_20160929_01_T1_B1.tif')
@@ -87,7 +97,7 @@ def get_intersection_point(origin, pointX, pointY):
     ''' Находит пересечение координатных линий по правилу параллелограмма.
         Для прямоугольника просто находит координату точки (x,y) отложенную от центра в точке origin.
     '''
-    return point1[0] + point2[0] - origin[0], point1[1] + point2[1] - origin[1]
+    return pointX[0] + pointY[0] - origin[0], pointX[1] + pointY[1] - origin[1]
 
 def download_city_data(city_relation):
     ''' Скачивает данные о городе из overpass api. Изначально использовалось название города,
