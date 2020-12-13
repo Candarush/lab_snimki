@@ -45,7 +45,7 @@ https://gist.github.com/ilyashatalov/5c6d8d24222c8fb07a7921dda109c8ea
    <strong><em>L = (M * gain) + bias</em></strong>, где\
    <strong><em>M</em></strong> - матрица со значениями unsigned char,  
    <strong><em>gain</em></strong> и <strong><em>bias</em></strong> - специальные параметры, определенные для спектрометра Landsat 7 еще до его запуска.  
-   (для Landsat 7: band 3 gain = 0.621654, bias = -5.62, band4 gain = 0.639764, bias = -5.74)  
+   (для Landsat 7: band 3 gain = 0.621654, bias = -5.62, band 4 gain = 0.639764, bias = -5.74)  
 3. Читаем из файла MTL значение SUN_EVALUATION - высота солнца над горизонтом в градусах.
 4. После этого можем посчитать коэффициент отражения R по формуле:  
    <strong><em>R = (π * L * d^2)/(E * sinθ)</em></strong>, где   
