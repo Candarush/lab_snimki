@@ -29,7 +29,7 @@ https://gist.github.com/ilyashatalov/5c6d8d24222c8fb07a7921dda109c8ea
 Формула для расчета NDVI:  
    <strong><em>NDVI = (Pnir - Pred)/(Pnir + Pred)</em></strong>, где  
    <strong><em>Pnir</em></strong> - коэффициент отражения в инфракрасной области спектра,  
-   <strong><em>Pnir</em></strong> - коэффициент отражения в ккрасной области спектра.  
+   <strong><em>Pnir</em></strong> - коэффициент отражения в красной области спектра.  
   
 Вычисление NDVI (без трансформации):  
 1. Открываем изображения Band 3 и Band 4, они имеют значения со значениями usigned char - целые числа от 0 до 255.
