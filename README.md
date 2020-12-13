@@ -27,7 +27,7 @@ https://gist.github.com/ilyashatalov/5c6d8d24222c8fb07a7921dda109c8ea
 Получение цветного изображения из матрицы NDVI происходит в функции apply_gradient.
 
 Из диапазонов длин волн снимков Band 3 (0.63 - 0.69 мкм) и Band 4 (0.77 - 0.90 мкм) Landsat 7 следует, что они хранят в себе информацию о красном и инфракрасном спектрах, поэтому далее будем использовать их для рассчета NDVI. Формула для рассчета:  
-   <strong>NDVI = (Pnir - Pred)/(Pnir + Pred)</strong>, где  
+   <strong><em>NDVI = (Pnir - Pred)/(Pnir + Pred)</em></strong>, где  
    <strong>Pnir</strong> - коэффициент отражения в инфракрасной спектра,  
    <strong>Pnir</strong> - коэффициент отражения в ккрасной спектра.  
 
